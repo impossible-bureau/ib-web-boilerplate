@@ -48,6 +48,7 @@ This will purge and reproduce another copy of the site files in the deploy direc
 <code>ib.Templates\['sample_template.html'](context)</code>
 * Remember to suffix all templates in templates/ with '.html' or else they will be ignored.
 * When adding new js scripts to source/index.html do not modify the comments (\<!-- DEV_ONLY -->, \<!-- END_DEV_ONLY -->, \<!-- PROD_ONLY -->, \<!-- END_PROD_ONLY -->). Similarly do not uncomment the min.js script. These should only be modified by the grunt deploy task. See the replace-string task in Gruntfile.js if you really need to modify these.
+* If you're using a text editor like sublime you can make your life easier by limiting the open folders to source/, templates/, and sass/ and adding \*.min.css and \*.min.js to your editor's search ignore preferences to keep searches manageable.
 
 
 ===
