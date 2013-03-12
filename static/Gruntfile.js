@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         handlebars: {
             compile: {
                 options: {
-                    namespace: 'Handlebars.templates',
+                    namespace: 'ib.Templates',
                     processName: function(filename) {
                         var pieces = filename.split('/');
                         return pieces[pieces.length - 1];

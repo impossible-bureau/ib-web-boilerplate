@@ -1,6 +1,7 @@
 .DS_Store
 scripts.min.js
 styles.min.css
+templates.js
 deploy/
 .sass-cache/
 node_modules/
