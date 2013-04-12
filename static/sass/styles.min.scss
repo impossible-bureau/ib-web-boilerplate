@@ -1,8 +1,10 @@
 @import "compass/css3";
+@import "compass/css3/appearance";
+@import "compass/css3/user-interface";
 @import "compass/utilities";
 
 @import "common/reset";
 @import "common/easing";
-@import "common/helpers";
+@import "common/mixins";
 
 @import "project/global";
