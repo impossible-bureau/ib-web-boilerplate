@@ -1,5 +1,3 @@
-/*! Copyright (c) 2013 Impossible Bureau (http://www.impossible-bureau.com) Licensed under the MIT License (LICENSE.txt). */
-
 var ib = ib || {};
 
 /**
@@ -49,6 +47,7 @@ ib.ComponentLoader = (function() {
                     id = $el.data('id');
                 } else {
                     id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index;
+                    $el.data('id', id);
                 }
 
                 component.id = id;

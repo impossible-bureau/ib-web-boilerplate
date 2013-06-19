@@ -1,5 +1,0 @@
-=======
-Django site boilerplate.
-=======
-
-TODO

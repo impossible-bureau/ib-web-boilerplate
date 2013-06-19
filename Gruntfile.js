@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'source/js/templates.js': ['<%= handlebars_path %>']
+                    'source/js/ib.Templates.min.js': ['<%= handlebars_path %>']
                 }
             }
         },
@@ -45,8 +45,8 @@ module.exports = function(grunt) {
             },
             build: {
                 src: [
-                    'source/js/libs/plugins.js',
-                    'source/js/templates.js',
+                    'source/js/libs/concatenated/*.js',
+                    'source/js/ib.Templates.min.js',
                     'source/js/common/*.js',
                     'source/js/controllers/*.js',
                     'source/js/components/*.js',
