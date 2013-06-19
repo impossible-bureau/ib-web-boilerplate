@@ -78,15 +78,7 @@ Project specific naming needs to be done in the following files:
 * When adding/removing plugins make sure to update package.json for everyone else by appending --save-dev to the install command like this:
 
   <code>cd path/to/package.json</code>
-	
+
   <code>npm install package-name --save-dev</code>
-  
+
   <code>npm uninstall package-name --save-dev</code>
-
-
-
-
-
-
-
-
