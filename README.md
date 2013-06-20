@@ -67,7 +67,7 @@ Will call for recompilation when changes are detected in either templates/ or te
 
 ###livereload
 
-While running the <code>grunt watch</code> command a livereload server will also be available for having your sass changes update on save without having to refresh the browser. A browser extension is required for enabling this behavior and can be found [here](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) for Chrome.
+While running the <code>grunt watch</code> command a livereload server will also be available for having your sass changes update on save without having to refresh the browser. A browser extension is required for enabling this behavior and can be found [here](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) for Chrome. One important note is that you need to make sure the "Allow access to file URLs" permission is on and that the plugin itself is enabled (the icon that will appear in the top right of your browser).
 
 
 ##Deployment Ready Build
