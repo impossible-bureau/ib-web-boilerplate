@@ -1,29 +1,59 @@
 #Static HTML/JS/CSS webapp boilerplate.
 
 ===
+This project contains boilerplate applications for either plain javascript (original/) or CoffeeScrip (coffescript/) projects.
+
+This project makes use of:
+
+* [SASS](http://sass-lang.com/) - A precompiled alternative to plain CSS (using the scss syntax)
+* [compass](http://compass-style.org/) - A set of convenient SASS mixins
+* [grunt](http://gruntjs.com/) - To automate build tasks
+* [jQuery](http://jquery.com/) - A popular JS library for common tasks
+* [coffeescript](http://coffeescript.org/) - (optional) A precompiled alternative to plain javascript
+
+The boilerplate is built around a minimal framework that allows for instantiable components to be dynamically initialized at any time by attaching a reference to the component in markup on the element that will become that component's context.
+
+Ex/
+
+	<div class="ib-component" data-component="ib.Carousel"></div>
+
 #Dependencies:
 
 ###compass
-* Make sure you have ruby installed (osx/linux should already have it) <code>ruby -v</code>
-* <code>sudo gem update --system</code>
-* <code>sudo gem install compass</code>
+Make sure you have ruby installed and up to date with a copy of the compass gem.
+	
+		sudo gem update --system
+		sudo gem install compass
 
 
 ###node/npm
 Assuming you're on OSX and have homebrew installed:
 
-* <code>brew install node</code>
-* If you're using an up to date version of homebrew this install should include npm - make sure it's on your path before proceeding.
-* Additionally you'll need to add the executables installed by npm to your path by appending it like so (in your .bash_profile or whatever you use) <code>export PATH="/usr/local/share/npm/bin:$PATH"</code>
+		<code>brew install node</code>
+
+If you're using an up to date version of homebrew this install should include npm - make sure it's on your path before proceeding.
+
+Additionally you'll need to add the executables installed by npm to your path by appending it like so (in your .bash_profile or whatever you use)
+
+		export PATH="/usr/local/share/npm/bin:$PATH"
 
 
 ###grunt
-* <code>npm install -g grunt-cli</code>
-* Now that grunt is installed you can install any project dependencies:
-* <code>cd path/to/packages.json</code>
-* <code>npm install</code>
-* <code>grunt</code> (to initially generate the styles.min.css and other compiled files which are excluded from the repo). <code>grunt watch</code> will keep these up to date as you work on the source files.
+Install:
 
+		npm install -g grunt-cli
+Now that grunt is installed you can install any project dependencies:
+
+		cd path/to/packages.json
+		npm install
+
+To initially generate the styles.min.css and other compiled files which are excluded from the repo:
+
+		grunt
+
+To keep these files up to date as you develop.
+
+		grunt watch
 
 ===
 #Common Development Tasks:
@@ -32,22 +62,25 @@ Assuming you're on OSX and have homebrew installed:
 ##Automated compilation on change (handlebars/scss)
 Will call for recompilation when changes are detected in either templates/ or templates/
 
-* <code>cd path/to/Gruntfile.js</code>   (or any subdirectory)
-* <code>grunt watch</code>
+		cd path/to/Gruntfile   (or any subdirectory)
+		grunt watch
+
+###livereload
+
+While running the <code>grunt watch</code> command a livereload server will also be available for having your sass changes update on save without having to refresh the browser. A browser extension is required for enabling this behavior and can be found [here](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) for Chrome.
 
 
-##Deployment
-This will purge and reproduce another copy of the site files in the deploy directory. The main difference is that index.html (and other files if specified in Gruntfile.js) will strip out individual js links in favor of a single link to scripts.min.js.
+##Deployment Ready Build
+This will purge and generate another copy of the site files in the deploy directory. The main difference is that index.html (and other files if specified in Gruntfile) will strip out individual js links in favor of a single link to scripts.min.js. If you wish to include certain libraries separately simple keep the library in the root of the source/libs/ directory and link it outside of the DEV_ONLY comment block in index.html.
 
-* <code>grunt deploy</code>
-* Test the build by confirming index.html was successfully modified (scripts.min.js is included instead of individual ones), and that it works by setting up another vhost/server with that folder as the document root.
+	grunt deploy
 
 
 ##Notes:
 * Note that the handlebars template namespace has been changed to ib.Templates so you should now process a template with this:
 <code>ib.Templates\['sample_template.html'](context)</code>
 * Remember to suffix all templates in templates/ with '.html' or else they will be ignored.
-* When adding new js scripts to source/index.html do not modify the comments (\<!-- DEV_ONLY -->, \<!-- END_DEV_ONLY -->, \<!-- PROD_ONLY -->, \<!-- END_PROD_ONLY -->). Similarly do not uncomment the min.js script. These should only be modified by the grunt deploy task. See the replace-string task in Gruntfile.js if you really need to modify these.
+* When adding new js scripts to source/index.html do not modify the comments (\<!-- DEV_ONLY -->, \<!-- END_DEV_ONLY -->, \<!-- PROD_ONLY -->, \<!-- END_PROD_ONLY -->). Similarly do not uncomment the min.js script. These should only be modified by the grunt deploy task. See the replace-string task in Gruntfile if you really need to modify these.
 * If you're using a text editor like sublime you can make your life easier by limiting the open folders to source/, templates/, and sass/ and adding \*.min.css and \*.min.js to your editor's search ignore preferences to keep searches manageable.
 
 
@@ -65,20 +98,22 @@ Project specific naming needs to be done in the following files:
 #Common Grunt Customization Tasks:
 
 ###Preprocessing more than just index.html
-* Add the files (destination:source) to the "string-replace" task's file object in Gruntfile.js
+Add the files (destination:source) to the "string-replace" task's file object in Gruntfile
 
 ###Changing javascript concat order or including additional folders
-* In Gruntfile.js you can find the concat task's src object which controls this.
+In the Gruntfile you can find the concat task's src object which controls this.
 
 ###Same, but with sass
-* This is controlled by sass/styles.min.scss (it's not actually minified here - this was just a convenience issue for automatically building to styles.min.css).
+This is controlled by sass/styles.min.scss (it's not actually minified here - this was just a convenience issue for automatically building to styles.min.css).
 
 ###Everything else
-* Most grunt modules have documenation on github - just search for the name listed in package.json (e.g. grunt-contrib-clean).
-* When adding/removing plugins make sure to update package.json for everyone else by appending --save-dev to the install command like this:
+Most grunt modules have documenation on github - just search for the name listed in package.json (e.g. grunt-contrib-clean).
 
-  <code>cd path/to/package.json</code>
+When adding/removing plugins make sure to update package.json for everyone else by appending --save-dev to the install command like this:
 
-  <code>npm install package-name --save-dev</code>
+		cd path/to/package.json
+		npm install package-name --save-dev
+	
+Similarly to remove a package:
 
-  <code>npm uninstall package-name --save-dev</code>
+		npm uninstall package-name --save-dev
