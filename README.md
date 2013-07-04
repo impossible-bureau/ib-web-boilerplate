@@ -9,7 +9,15 @@ This project makes use of:
 * [compass](http://compass-style.org/) - A set of convenient SASS mixins
 * [grunt](http://gruntjs.com/) - To automate build tasks
 * [jQuery](http://jquery.com/) - A popular JS library for common tasks
+* [Handlebars.js](http://handlebarsjs.com/) - Frontend templating
 * [coffeescript](http://coffeescript.org/) - (optional) A precompiled alternative to plain javascript
+
+
+Additionally this project makes use of plugins or is based on code from:
+* [jQuery Easing Plugin](http://gsgd.co.uk/sandbox/jquery/easing/) - Adds Robert Penner's easing functions to jQuery animations.
+* [Cinnamon Boilerplate](https://github.com/wagerfield/cinnamon) - Adds Robert Penner's easing functions as SASS variables and has some common reset styles.
+* [Soulwire](http://soulwire.co.uk/) - ComponentLoader is based on some of his work.
+* [rAF.js](https://gist.github.com/paulirish/1579671) - requestAnimationFrame polyfill.
 
 The boilerplate is built around a minimal framework that allows for instantiable components to be dynamically initialized at any time by attaching a reference to the component in markup on the element that will become that component's context.
 
