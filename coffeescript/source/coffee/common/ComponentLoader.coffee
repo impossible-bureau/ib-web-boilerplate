@@ -33,7 +33,7 @@ class ib.ComponentLoader
       type = $(this).data(COMPONENT_ATTRIBUTE)
       id = null
       $el = $(this)
-      if registeredClasses[type] isnt 'undefined'
+      if typeof registeredClasses[type] isnt 'undefined'
         component = new registeredClasses[type]($(this))
         if $el.data('id')
           id = $el.data('id')
