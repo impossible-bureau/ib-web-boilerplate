@@ -1,4 +1,4 @@
 var ib = ib || {};
 $(document).ready(function() {
-    ib.Main.init();
+  ib.Main.init();
 });
