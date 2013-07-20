@@ -1,0 +1,15 @@
+=absolute-cover
+  height: 100%
+  left: 0
+  position: absolute
+  top: 0
+  width: 100%
+
+=common-sprite($xOffset, $yOffset, $width, $height)
+  background:
+    image: url(../images/sprites.png)
+    repeat: no-repeat
+    position: $xOffset $yOffset
+  display: block
+  height: $height
+  width: $width

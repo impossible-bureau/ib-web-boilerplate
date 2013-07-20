@@ -48,7 +48,7 @@ To attach a component to an element:
         $el = $(this);
         if (typeof registeredClasses[type] !== 'undefined') {
           component = new registeredClasses[type]($(this));
-          if ($el.data('id')) {
+          if (typeof $el.data('id') !== 'undefined') {
             id = $el.data('id');
           } else {
             id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index;

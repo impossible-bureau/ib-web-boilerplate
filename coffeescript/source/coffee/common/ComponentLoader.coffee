@@ -35,7 +35,7 @@ class ib.ComponentLoader
       $el = $(this)
       if typeof registeredClasses[type] isnt 'undefined'
         component = new registeredClasses[type]($(this))
-        if $el.data('id')
+        if typeof $el.data('id') isnt 'undefined'
           id = $el.data('id')
         else
           id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index

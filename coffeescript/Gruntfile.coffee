@@ -19,7 +19,7 @@ module.exports = (grunt) ->
                     sassDir: '<%= sass_dir %>'
                     cssDir: 'source/css'
                     environment: 'production'
-                    specify: 'sass/styles.min.scss'
+                    specify: 'sass/styles.min.sass'
                     outputStyle: 'compressed'
         coffee:
             compile:
@@ -35,7 +35,7 @@ module.exports = (grunt) ->
                 files: ['<%= handlebars_path %>']
                 tasks: 'handlebars'
             compass:
-                files: ['<%= sass_dir %>/**/*.scss']
+                files: ['<%= sass_dir %>/**/*.sass']
                 tasks: 'compass'
                 options:
                     livereload: true
