@@ -37,6 +37,8 @@ module.exports = (grunt) ->
       compass:
         files: ['<%= sass_dir %>/**/*.sass']
         tasks: 'compass'
+      css:
+        files: ['source/css/*.css']
         options:
           livereload: true
       coffee:

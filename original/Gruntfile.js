@@ -36,10 +36,13 @@ module.exports = function(grunt) {
       },
       compass: {
         files: ['<%= sass_dir %>/**/*.sass'],
-        tasks: 'compass',
-        options: {
-          livereload: true
-        }
+        tasks: 'compass'
+      },
+      css: {
+          files: ['source/css/*.css'],
+          options: {
+              livereload: true
+          }
       }
     },
     concat: {
