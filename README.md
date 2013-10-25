@@ -32,30 +32,30 @@ Ex/
 ###compass
 Make sure you have ruby installed and up to date with a copy of the compass gem.
 
-		sudo gem update --system
-		sudo gem install compass
+	sudo gem update --system
+	sudo gem install compass
 
 
 ###node/npm
 Assuming you're on OSX and have homebrew installed:
 
-		<code>brew install node</code>
+	<code>brew install node</code>
 
 If you're using an up to date version of homebrew this install should include npm - make sure it's on your path before proceeding.
 
 Additionally you'll need to add the executables installed by npm to your path by appending it like so (in your .bash_profile or whatever you use)
 
-		export PATH="/usr/local/share/npm/bin:$PATH"
+	export PATH="/usr/local/share/npm/bin:$PATH"
 
 
 ###grunt
 Install grunt globally:
 
-		npm install -g grunt-cli
+	npm install -g grunt-cli
 
 Install node packages specific to the project:
 
-		npm install
+	npm install
 
 
 ###livereload
@@ -76,11 +76,11 @@ While running the <code>grunt watch</code> command a livereload server will also
 
 To update bower dependencies, and process any other files initially or after a pull:
 
-		grunt
+	grunt
 
 To keep these files up to date as you develop run this process (includes livereload task too):
 
-		grunt watch
+	grunt watch
 
 Generate a copy with processed scripts in a separate deploy folder:
 
@@ -106,11 +106,11 @@ This is controlled by sass/styles.min.scss (it's not actually minified here - th
 ###Editing npm and bower dependencies
 When adding/removing grunt/node plugins make sure to update package.json for everyone else by appending --save to the install command like this:
 
-		cd path/to/package.json
-		npm install package-name --save
+	cd path/to/package.json
+	npm install package-name --save
 
 Similarly to remove a package:
 
-		npm uninstall package-name --save
+	npm uninstall package-name --save
 
 Bower has similar commands using the bower.json file.
