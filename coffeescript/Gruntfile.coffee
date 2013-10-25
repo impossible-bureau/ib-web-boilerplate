@@ -44,19 +44,19 @@ module.exports = (grunt) ->
       coffee:
         files: ['source/coffee/**/*.coffee']
         tasks: 'coffee'
-      libupdate:
-        files: ['source/coffee/libs/**']
-        tasks: 'copy:libupdate'
     concat:
       options:
         separator: ';'
       build:
         src: [
-          'source/js/libs/concatenated/*.js'
+          'source/lib/console-polyfill/index.js'
+          'source/lib/handlebars/handlebars.js'
+          'source/lib/jquery.easing/jquery.easing.min.js'
+          'source/lib/raf.js/raf.js'
           'source/js/Templates.min.js'
-          'source/js/common/*.js'
-          'source/js/controllers/*.js'
-          'source/js/components/*.js'
+          'source/js/common/ComponentLoader.js'
+          'source/js/controllers/Main.js'
+          'source/js/components/ComponentExample.js'
           'source/js/Bootstrap.js'
         ]
         dest: 'source/js/scripts.js'
@@ -82,13 +82,6 @@ module.exports = (grunt) ->
           src: ['**']
           dest: 'deploy/'
         ]
-      libupdate:
-        files: [
-          expand: true
-          cwd: 'source/coffee/libs'
-          src: ['**']
-          dest: 'source/js/libs'
-        ]
     "string-replace":
       deploy:
         files:
@@ -104,16 +97,22 @@ module.exports = (grunt) ->
               replacement: '$1'
             }
           ]
+    bower:
+      install:
+        options:
+          targetDir: 'source/lib'
 
-  grunt.loadNpmTasks('grunt-contrib-copy')
-  grunt.loadNpmTasks('grunt-string-replace')
-  grunt.loadNpmTasks('grunt-contrib-handlebars')
-  grunt.loadNpmTasks('grunt-contrib-compass')
-  grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-clean')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-contrib-concat')
-  grunt.loadNpmTasks('grunt-contrib-coffee')
+  grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-string-replace'
+  grunt.loadNpmTasks 'grunt-contrib-handlebars'
+  grunt.loadNpmTasks 'grunt-contrib-compass'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-bower-task'
 
-  grunt.registerTask('default', ['compass', 'handlebars', 'coffee', 'concat', 'uglify', 'clean:build'])
+  grunt.registerTask('install', ['bower:install'])
+  grunt.registerTask('default', ['install', 'compass', 'handlebars', 'coffee', 'concat', 'uglify', 'clean:build'])
   grunt.registerTask('deploy', ['default', 'clean:deploy', 'copy:deploy', 'string-replace'])

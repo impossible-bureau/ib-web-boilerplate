@@ -22,24 +22,24 @@ class ib.ComponentLoader
 
   ###
   Finds, initializes, and stores components with registered classes.
-  @param {jQuery.Element} $context - The element to load components from.
+  @param {jQuery.Element} context - The element to load components from.
   ###
-  @init: ($context) ->
-    $context = $context or $('body')
-    $('.' + COMPONENT_CLASS, $context).each (index) ->
+  @init: (initContext) ->
+    context = initContext or $('body')
+    $('.' + COMPONENT_CLASS, context).each (index) ->
       return -1  if $.inArray(this, registeredElements) isnt -1
       registeredElements.push(this)
       component = null
       type = $(this).data(COMPONENT_ATTRIBUTE)
       id = null
-      $el = $(this)
+      el = $(this)
       if typeof registeredClasses[type] isnt 'undefined'
         component = new registeredClasses[type]($(this))
-        if typeof $el.data('id') isnt 'undefined'
-          id = $el.data('id')
+        if typeof el.data('id') isnt 'undefined'
+          id = el.data('id')
         else
           id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index
-          $el.data('id', id)
+          el.data('id', id)
         component.id = id
         instances[id] = component
         if typeof (instancesByType[type]) is 'undefined'

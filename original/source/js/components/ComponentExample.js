@@ -14,19 +14,19 @@ var ib = ib || {};
 /**
  * @param {Element} $context - the container element for the component elements.
  */
-ib.ComponentExample = function($context, options) {
-  this.$context = $context;
+ib.ComponentExample = function(context, options) {
+  this.context = context;
 
   this.opts = $.extend({
-  }, options || $context.data());
+  }, options || context.data());
 };
 
 
 ib.ComponentExample.prototype = {
   init: function() {
-    var context = {'name': this.$context.data('id')};
-    var markup = ib.Templates['sampleTemplate.html'](context);
-    this.$context.html(markup);
+    var templateContext = {'name': this.context.data('id')};
+    var markup = ib.Templates['sampleTemplate.html'](templateContext);
+    this.context.html(markup);
 
     /**
      * If you had additional components to initialize:

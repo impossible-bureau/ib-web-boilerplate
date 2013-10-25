@@ -11,20 +11,19 @@ Description.
 ###
 
 ###
-@param {Element} $context - the container element for the component elements.
+@param {Element} context - the container element for the component elements.
 ###
 class ib.ComponentExample
-  constructor: ($context, options) ->
-    @$context = $context
-    @opts = $.extend({}, options or $context.data())
+  constructor: (@context, options) ->
+    @opts = $.extend({}, options or @context.data())
 
   init: ->
-    context = name: @$context.data("id")
-    markup = ib.Templates["sampleTemplate.html"](context)
-    @$context.html(markup)
+    templateContext = name: @context.data("id")
+    markup = ib.Templates["sampleTemplate.html"](templateContext)
+    @context.html(markup)
     ###
     If you had additional components to initialize:
-    ib.ComponentLoader.init(this.$context);
+    ib.ComponentLoader.init(@context);
     ###
     return
 

@@ -25,41 +25,41 @@ ib.ComponentLoader = (function() {
 
   /**
   * Finds, initializes, and stores components with registered classes.
-  * @param {jQuery.Element} $context - The element to load components from.
+  * @param {jQuery.Element} context - The element to load components from.
   */
-  function init($context) {
-  $context = $context || $('body');
+  function init(initContext) {
+    context = initContext || $('body');
 
-  $('.' + COMPONENT_CLASS, $context).each(function(index) {
-    if ($.inArray(this, registeredElements) !== -1) {
-    return -1;
-    }
-    registeredElements.push(this);
+    $('.' + COMPONENT_CLASS, context).each(function(index) {
+      if ($.inArray(this, registeredElements) !== -1) {
+        return -1;
+      }
+      registeredElements.push(this);
 
-    var component = null,
-    type = $(this).data(COMPONENT_ATTRIBUTE),
-    id = null;
-    $el = $(this);
+      var component = null;
+      var type = $(this).data(COMPONENT_ATTRIBUTE);
+      var id = null;
+      var el = $(this);
 
-    if (registeredClasses[type] !== 'undefined') {
-    component = new registeredClasses[type]($(this));
-    if (typeof $el.data('id') !== 'undefined') {
-      id = $el.data('id');
-    } else {
-      id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index;
-      $el.data('id', id);
-    }
+      if (registeredClasses[type] !== 'undefined') {
+        component = new registeredClasses[type]($(this));
+        if (typeof el.data('id') !== 'undefined') {
+          id = el.data('id');
+        } else {
+          id = COMPONENT_CLASS + Math.floor(Math.random() * 100000) + '' + index;
+          el.data('id', id);
+        }
 
-    component.id = id;
-    instances[id] = component;
-    if (typeof(instancesByType[type]) === 'undefined') {
-      instancesByType[type] = [component];
-    } else {
-      instancesByType[type].push(component);
-    }
-    component.init();
-    }
-  });
+      component.id = id;
+      instances[id] = component;
+      if (typeof(instancesByType[type]) === 'undefined') {
+        instancesByType[type] = [component];
+      } else {
+        instancesByType[type].push(component);
+      }
+      component.init();
+      }
+    });
   }
 
   /*
@@ -68,7 +68,7 @@ ib.ComponentLoader = (function() {
   * @param {Object} component - the class object itself.
   */
   function register(name, component) {
-  registeredClasses[name] = component;
+    registeredClasses[name] = component;
   }
 
   /**
@@ -77,7 +77,7 @@ ib.ComponentLoader = (function() {
    * @return {Object} - The instance or null.
    */
   function findInstanceById(id) {
-  return instances[id];
+    return instances[id];
   }
 
   /**
@@ -86,19 +86,19 @@ ib.ComponentLoader = (function() {
    * @return {Array} - All instances found or an empty array.
    */
   function findInstancesByType(type) {
-  var result = instancesByType[type];
-  if (result === null) {
-    result = [];
-  }
-  return result;
+    var result = instancesByType[type];
+    if (result === null) {
+      result = [];
+    }
+    return result;
   }
 
 
   return {
-  init: init,
-  register: register,
-  findInstanceById: findInstanceById,
-  findInstancesByType: findInstancesByType
+    init: init,
+    register: register,
+    findInstanceById: findInstanceById,
+    findInstancesByType: findInstancesByType
   };
 
 }());

@@ -5,3 +5,5 @@ ib.Templates.min.js
 deploy/
 .sass-cache/
 node_modules/
+bower_components/
+source/lib/

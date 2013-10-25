@@ -51,7 +51,10 @@ module.exports = function(grunt) {
       },
       build: {
         src: [
-          'source/js/libs/concatenated/*.js',
+          'source/lib/console-polyfill/index.js',
+          'source/lib/handlebars/handlebars.js',
+          'source/lib/jquery.easing/jquery.easing.min.js',
+          'source/lib/raf.js/raf.js',
           'source/js/Templates.min.js',
           'source/js/common/*.js',
           'source/js/controllers/*.js',
@@ -108,6 +111,13 @@ module.exports = function(grunt) {
           ]
         }
       }
+    },
+    bower: {
+      install: {
+        options: {
+          targetDir: 'source/lib',
+        }
+      }
     }
   });
 
@@ -119,7 +129,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-bower-task');
 
-  grunt.registerTask('default', ['compass', 'handlebars', 'concat', 'uglify', 'clean:build']);
+  grunt.registerTask('install', ['bower:install']);
+  grunt.registerTask('default', ['install', 'compass', 'handlebars', 'concat', 'uglify', 'clean:build']);
   grunt.registerTask('deploy', ['default', 'clean:deploy', 'copy', 'string-replace']);
 };
