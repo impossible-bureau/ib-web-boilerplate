@@ -8,9 +8,10 @@ This project makes use of:
 * [SASS](http://sass-lang.com/) - A precompiled alternative to plain CSS (using the scss syntax)
 * [compass](http://compass-style.org/) - A set of convenient SASS mixins
 * [grunt](http://gruntjs.com/) - To automate build tasks
+* [bower](http://bower.io/) - A package manager for javascript dependencies
 * [jQuery](http://jquery.com/) - A popular JS library for common tasks
 * [Handlebars.js](http://handlebarsjs.com/) - Frontend templating
-* [bower](http://bower.io/) - A package manager for javascript dependencies
+* [modernizr](http://modernizr.com/) - HTML5 shiv + feature detection
 * [coffeescript](http://coffeescript.org/) - (optional) A precompiled alternative to plain javascript
 
 
@@ -51,7 +52,7 @@ Additionally you'll need to add the executables installed by npm to your path by
 Install grunt globally:
 
 		npm install -g grunt-cli
-		
+
 Install node packages specific to the project:
 
 		npm install
