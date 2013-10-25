@@ -47,7 +47,6 @@ class ib.ComponentLoader
         else
           instancesByType[type].push(component)
         component.init()
-        return
 
 
   ###
@@ -57,7 +56,6 @@ class ib.ComponentLoader
   ###
   @register: (name, component) ->
     registeredClasses[name] = component
-    return
 
   ###
   Returns an instance basd on its id.
@@ -74,5 +72,5 @@ class ib.ComponentLoader
   ###
   @findInstancesByType: (type) ->
     result = instancesByType[type]
-    result = []  if result is null
+    result = [] if result is null
     result

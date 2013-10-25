@@ -13,3 +13,20 @@
   display: block
   height: $height
   width: $width
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=animation($name, $duration, $repeat, $easing)
+  -o-animation: #{$name} #{$duration} #{$repeat} #{$easing}
+  -moz-animation: #{$name} #{$duration} #{$repeat} #{$easing}
+  -ms-animation: #{$name} #{$duration} #{$repeat} #{$easing}
+  -webkit-animation: #{$name} #{$duration} #{$repeat} #{$easing}
+  animation: #{$name} #{$duration} #{$repeat} #{$easing}

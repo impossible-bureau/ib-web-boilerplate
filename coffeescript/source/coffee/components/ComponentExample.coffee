@@ -25,6 +25,5 @@ class ib.ComponentExample
     If you had additional components to initialize:
     ib.ComponentLoader.init(@context);
     ###
-    return
 
 ib.ComponentLoader.register "ib.ComponentExample", ib.ComponentExample

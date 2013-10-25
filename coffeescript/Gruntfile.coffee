@@ -1,5 +1,17 @@
 module.exports = (grunt) ->
-
+  scriptLinkWarning = '\n<!--\n***\nGenerated script links: You must edit the list in the Gruntfile or your changes will be overwritten.\n***\n-->'
+  concatenatedScriptSources = [
+    'source/lib/console-polyfill/index.js'
+    'source/lib/handlebars/handlebars.js'
+    'source/lib/jquery.easing/jquery.easing.min.js'
+    'source/lib/raf.js/raf.js'
+    'source/js/Templates.min.js'
+    'source/js/common/ComponentLoader.js'
+    'source/js/controllers/Main.js'
+    'source/js/components/ComponentExample.js'
+    # Bootstrap must come last.
+    'source/js/Bootstrap.js'
+  ]
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
     handlebars_path: 'templates/*.html'
@@ -48,17 +60,7 @@ module.exports = (grunt) ->
       options:
         separator: ';'
       build:
-        src: [
-          'source/lib/console-polyfill/index.js'
-          'source/lib/handlebars/handlebars.js'
-          'source/lib/jquery.easing/jquery.easing.min.js'
-          'source/lib/raf.js/raf.js'
-          'source/js/Templates.min.js'
-          'source/js/common/ComponentLoader.js'
-          'source/js/controllers/Main.js'
-          'source/js/components/ComponentExample.js'
-          'source/js/Bootstrap.js'
-        ]
+        src: concatenatedScriptSources
         dest: 'source/js/scripts.js'
     uglify:
       options:
@@ -83,6 +85,22 @@ module.exports = (grunt) ->
           dest: 'deploy/'
         ]
     "string-replace":
+      build:
+        files:
+          'source/index.html': 'source/index.html'
+        options:
+          replacements: [
+            {
+              pattern: /<!-- DEV_ONLY -->[\s\S]*<!-- END_DEV_ONLY -->/
+              replacement: ->
+                sources = ''
+                for src in concatenatedScriptSources
+                  src = src.replace 'source', ''
+                  sources += '\n  <script type="text/javascript" src="' + src + '"></script>'
+
+                return '<!-- DEV_ONLY -->' + scriptLinkWarning + sources + '\n  <!-- END_DEV_ONLY -->'
+            }
+          ]
       deploy:
         files:
           'deploy/index.html': 'deploy/index.html'
@@ -114,5 +132,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-bower-task'
 
   grunt.registerTask('install', ['bower:install'])
-  grunt.registerTask('default', ['install', 'compass', 'handlebars', 'coffee', 'concat', 'uglify', 'clean:build'])
-  grunt.registerTask('deploy', ['default', 'clean:deploy', 'copy:deploy', 'string-replace'])
+  grunt.registerTask('default', ['install', 'compass', 'handlebars', 'coffee', 'concat', 'uglify', 'clean:build', 'string-replace:build'])
+  grunt.registerTask('deploy', ['default', 'clean:deploy', 'copy:deploy', 'string-replace:deploy'])
