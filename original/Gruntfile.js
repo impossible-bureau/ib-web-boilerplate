@@ -155,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-task');
 
   grunt.registerTask('install', ['bower:install']);
+  grunt.registerTask('updatebase', ['string-replace:build']);
   grunt.registerTask('default', ['install', 'compass', 'handlebars', 'concat', 'uglify', 'clean:build', 'string-replace:build']);
   grunt.registerTask('deploy', ['default', 'clean:deploy', 'copy', 'string-replace:deploy']);
 };
