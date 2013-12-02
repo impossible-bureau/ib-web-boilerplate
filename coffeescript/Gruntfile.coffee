@@ -118,6 +118,7 @@ module.exports = (grunt) ->
     bower:
       install:
         options:
+          verbose: true
           targetDir: 'source/lib'
 
   grunt.loadNpmTasks 'grunt-contrib-copy'
