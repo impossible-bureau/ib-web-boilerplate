@@ -39,7 +39,7 @@ Make sure you have ruby installed and up to date with a copy of the compass gem.
 ###node/npm
 Assuming you're on OSX and have homebrew installed:
 
-	<code>brew install node</code>
+	brew install node
 
 If you're using an up to date version of homebrew this install should include npm - make sure it's on your path before proceeding.
 
