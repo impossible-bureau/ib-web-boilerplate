@@ -10,12 +10,15 @@
 * [gulp](http://gulpjs.com/) - Javascript build tool
 * [npm](https://www.npmjs.com/) - Node package manager
 
+Dependencies: [node/npm](https://nodejs.org/)
+
 ===
 
 ## Install
-
-Ensure you have [node/npm](https://nodejs.org/) installed and run:
-
+	
+	$ npm run copy
+	$ (prompted for destination path)
+	$ cd /path/you/copied/to
     $ npm install
 
 ## Work (Build/Watch)

@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "copy": "echo 'Where to?:' && read dest && rsync -a --exclude='.git' ./ $dest"
   },
   "dependencies": {
     "browserify": "^10.2.4",
