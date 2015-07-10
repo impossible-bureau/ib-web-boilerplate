@@ -5,6 +5,6 @@ window.ib = {};
 
 
 // Quick example
-var example_controller = require('./controllers/example_controller');
+require('controllers/example_controller');
 var foo = new example_controller();
 foo.render();

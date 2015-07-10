@@ -1,5 +1,5 @@
 example_controller = function() {
-  this.template = require('../../templates/example.html');
+  this.template = require('example.html');
 };
 
 example_controller.prototype.render = function() {

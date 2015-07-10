@@ -55,6 +55,7 @@ gulp.task('scripts', function() {
   var opts = {
     entries: config.sourcePath + 'js/app.js',
     debug: !is_production,
+    paths: [config.sourcePath + 'js', config.sourcePath + 'templates'],
     transform: ['node-underscorify']
   };
   return browserify(opts)
