@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "folder_exclude_patterns": [
+        "node_modules",
+        ".sass-cache"
+      ],
+      "file_exclude_patterns": [
+        "*.min.js",
+        "*.min.js.map",
+        "*.min.css"
+      ],
+      "path": "."
+    }
+  ],
+  "settings": {
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true
+  }
+}

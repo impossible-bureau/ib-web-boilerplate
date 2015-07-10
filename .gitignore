@@ -1,0 +1,17 @@
+# Packages
+node_modules/
+
+# Cache
+.sass-cache/
+
+# Logs
+*.log
+
+# Generated Files
+public/styles.min.css
+public/app.min.js
+public/app.min.js.map
+
+# Misc
+.DS_Store
+*.sublime-workspace
