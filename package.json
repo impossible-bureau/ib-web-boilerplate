@@ -1,10 +1,13 @@
 {
   "name": "ib-web-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web app boilerplate",
   "repository": {
     "type": "git",
     "url": "https://github.com/impossible-bureau/ib-web-boilerplate"
+  },
+  "bin": {
+    "ib-web-boilerplate": "./bin"
   },
   "author": "Impossible Bureau",
   "license": "ISC",
