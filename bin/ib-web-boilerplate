@@ -1,13 +1,15 @@
 #!/bin/bash
+DEST=$1
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
-  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  FROM="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
   SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  [[ $SOURCE != /* ]] && SOURCE="$FROM/$SOURCE"
 done
-DIR="$(dirname $( cd -P "$( dirname "$SOURCE" )" && pwd ))/."
-echo 'Where to?:'
-read dest
-rsync -a --exclude='.git' --exclude='bin' $DIR $dest
-mv .npmignore .gitignore
-mv _package.json package.json
+FROM="$(dirname $( cd -P "$( dirname "$SOURCE" )" && pwd ))/."
+if rsync -a --exclude='.git' --exclude='bin' $FROM $DEST; then
+  mv $DEST/.npmignore $DEST/.gitignore
+  mv $DEST/_package.json $DEST/package.json
+else
+  echo "Failed to copy"
+fi
