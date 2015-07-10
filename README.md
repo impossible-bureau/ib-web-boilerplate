@@ -17,8 +17,8 @@ Dependencies: [node/npm](https://nodejs.org/)
 ## Install
 
 You'll want to install the boilerplate globally to act as a generator:
-	
-	$ npm install -g impossible-bureau/ib-web-boilerplate
+
+	$ npm install -g ib-web-boilerplate
 
 Now you should have `ib-web-boilerplate` available on your path you can make a new project with:
 

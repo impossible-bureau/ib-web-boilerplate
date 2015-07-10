@@ -1,5 +1,5 @@
 #!/bin/bash
-DEST=$1
+DEST=${1:-'.'}
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
   FROM="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
